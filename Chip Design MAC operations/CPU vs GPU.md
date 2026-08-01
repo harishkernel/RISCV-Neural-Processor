@@ -13,3 +13,19 @@ Read Data → Execute Instruction → Write Result
 
 ### GPU
 - 1000+ normal cores
+
+### TPU
+
+<table>
+  <tr>
+    <td align="center"><b>MXUs</b></td>
+    <td align="center"><b>MXUs</b></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" height="80"><b>Vector</b></td>
+  </tr>
+  <tr>
+    <td align="center"><b>MXUs</b></td>
+    <td align="center"><b>MXUs</b></td>
+  </tr>
+</table>
