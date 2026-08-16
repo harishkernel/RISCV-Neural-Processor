@@ -1,0 +1,17 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2AR-18C" pn="GW2AR-LV18QN88C8/I7">gw2ar18c-000</Device>
+    <FileList>
+        <File path="src/csa.v" type="file.verilog" enable="1"/>
+        <File path="src/csa_tb.v" type="file.verilog" enable="1"/>
+        <File path="src/full_adder.v" type="file.verilog" enable="1"/>
+        <File path="src/full_adder_tb.v" type="file.verilog" enable="1"/>
+        <File path="src/half_adder.v" type="file.verilog" enable="1"/>
+        <File path="src/half_adder_tb.v" type="file.verilog" enable="1"/>
+        <File path="src/wallace_4x4.v" type="file.verilog" enable="1"/>
+        <File path="src/wallace_tb.v" type="file.verilog" enable="1"/>
+    </FileList>
+</Project>

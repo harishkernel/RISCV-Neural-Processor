@@ -1,0 +1,10 @@
+# Gowin generated implementation files
+Project/impl/
+
+# Gowin user-specific project state
+Project/*.gprj.user
+
+# Simulation output
+*.vcd
+*_sim
+*.vvp
