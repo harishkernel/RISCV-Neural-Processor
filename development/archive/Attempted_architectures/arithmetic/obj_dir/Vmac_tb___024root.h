@@ -1,0 +1,49 @@
+// Verilated -*- C++ -*-
+// DESCRIPTION: Verilator output: Design internal header
+// See Vmac_tb.h for the primary calling header
+
+#ifndef VERILATED_VMAC_TB___024ROOT_H_
+#define VERILATED_VMAC_TB___024ROOT_H_  // guard
+
+#include "verilated.h"
+#include "verilated_timing.h"
+
+
+class Vmac_tb__Syms;
+
+class alignas(VL_CACHE_LINE_BYTES) Vmac_tb___024root final {
+  public:
+
+    // DESIGN SPECIFIC STATE
+    CData/*0:0*/ mac_tb__DOT__clk;
+    CData/*0:0*/ mac_tb__DOT__reset;
+    CData/*0:0*/ mac_tb__DOT__enable;
+    CData/*7:0*/ mac_tb__DOT__A;
+    CData/*7:0*/ mac_tb__DOT__B;
+    CData/*0:0*/ __Vtrigprevexpr___TOP__mac_tb__DOT__clk__0;
+    IData/*31:0*/ mac_tb__DOT__acc_out;
+    IData/*31:0*/ mac_tb__DOT__errors;
+    IData/*31:0*/ __Vi;
+    VlUnpacked<QData/*63:0*/, 1> __VstlTriggered;
+    VlUnpacked<QData/*63:0*/, 1> __VicoTriggered;
+    VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
+    VlUnpacked<QData/*63:0*/, 1> __VactTriggeredAcc;
+    VlUnpacked<QData/*63:0*/, 1> __VnbaTriggered;
+    VlDelayScheduler __VdlySched;
+    VlTriggerScheduler __VtrigSched_hf844d8d6__0;
+
+    // INTERNAL VARIABLES
+    Vmac_tb__Syms* vlSymsp;
+    const char* vlNamep;
+
+    // CONSTRUCTORS
+    Vmac_tb___024root(Vmac_tb__Syms* symsp, const char* namep);
+    ~Vmac_tb___024root();
+    VL_UNCOPYABLE(Vmac_tb___024root);
+
+    // INTERNAL METHODS
+    void __Vconfigure(bool first);
+};
+
+
+#endif  // guard

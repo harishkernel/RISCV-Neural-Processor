@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gowin-synthesis-project>
+<Project>
+    <Version>beta</Version>
+    <Device id="GW5A-25A" package="MBGA121N" speed="1" partNumber="GW5A-LV25MG121NC1/I0"/>
+    <FileList>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\activation_feeder.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\agvme_core.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\agvme_top.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\bsram_pingpong.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\input_skew.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\int8_mac_booth.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\int8_mac_dsp.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\main_controller.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\output_drain.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\pe_booth.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\pe_dsp.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\post_processor.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\systolic_array_8x8.v" type="verilog"/>
+        <File path="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\weight_loader.v" type="verilog"/>
+    </FileList>
+    <OptionList>
+        <Option type="disable_insert_pad" value="0"/>
+        <Option type="enable_dsrm" value="0"/>
+        <Option type="global_freq" value="100.000"/>
+        <Option type="looplimit" value="2000"/>
+        <Option type="output_file" value="C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\impl\gwsynthesis\AGVME_Synthesis.vg"/>
+        <Option type="print_all_synthesis_warning" value="0"/>
+        <Option type="ram_rw_check" value="0"/>
+        <Option type="top_module" value="agvme_top"/>
+        <Option type="vcc" value="0.9"/>
+        <Option type="verilog_language" value="verilog-2001"/>
+        <Option type="vhdl_language" value="vhdl-1993"/>
+    </OptionList>
+</Project>

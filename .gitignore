@@ -1,0 +1,18 @@
+# Ideated thoughts (.md files)
+AgentGate-V_Final_Pitch.md
+IDEA_BANK.md
+latest_brainstormed_activities.md
+
+# Gowin generated implementation files
+hw/agvme_project/impl/
+
+# Gowin user-specific project state
+hw/agvme_project/*.gprj.user
+
+# Simulation output
+*.vcd
+*_sim
+*.vvp
+
+# College review stuff
+docs/presentations/

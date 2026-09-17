@@ -1,0 +1,23 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW5A-25A" pn="GW5A-LV25MG121NC1/I0">gw5a25a-002</Device>
+    <FileList>
+        <File path="src/activation_feeder.v" type="file.verilog" enable="1"/>
+        <File path="src/agvme_core.v" type="file.verilog" enable="1"/>
+        <File path="src/agvme_top.v" type="file.verilog" enable="1"/>
+        <File path="src/bsram_pingpong.v" type="file.verilog" enable="1"/>
+        <File path="src/input_skew.v" type="file.verilog" enable="1"/>
+        <File path="src/int8_mac_booth.v" type="file.verilog" enable="1"/>
+        <File path="src/int8_mac_dsp.v" type="file.verilog" enable="1"/>
+        <File path="src/main_controller.v" type="file.verilog" enable="1"/>
+        <File path="src/output_drain.v" type="file.verilog" enable="1"/>
+        <File path="src/pe_booth.v" type="file.verilog" enable="1"/>
+        <File path="src/pe_dsp.v" type="file.verilog" enable="1"/>
+        <File path="src/post_processor.v" type="file.verilog" enable="1"/>
+        <File path="src/systolic_array_8x8.v" type="file.verilog" enable="1"/>
+        <File path="src/weight_loader.v" type="file.verilog" enable="1"/>
+    </FileList>
+</Project>

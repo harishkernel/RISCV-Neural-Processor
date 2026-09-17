@@ -1,0 +1,250 @@
+Part 1: Architecture Deep Dive — Design Decisions and Microarchitecture
+
+There's something clarifying about building from scratch
+Not using vendor IP. Not starting from a reference design. Just a blank file, a set of constraints, and the question: how should this actually work?
+
+What follows documents the architectural decisions behind a custom AI accelerator—the reasoning, the tradeoffs, the dead ends. The goal isn't to present a polished final product, but to show how the decisions got made. What questions surfaced. What alternatives got rejected and why.
+
+Hardware architecture is usually tribal knowledge, absorbed through years of proximity to people who've done it before. That's a high barrier. I wanted to lower it—not by simplifying the technical content, but by making the reasoning visible.
+
+This is Part 1 of four. Here we cover the architecture decisions: systolic arrays, control hierarchy, ISA design, memory systems. Part 2 walks through Python models as executable specifications, then RTL implementation. Part 3 covers verification strategy with open-source tools. Part 4 traces the complete software flow from ONNX to binary.
+
+Before writing any RTL, nail down what you're not building
+Scope creep kills hardware projects. So the first order of business is drawing boundaries.
+
+Inference only, or training support? Training requires backward passes, gradient accumulation, and roughly 2× the memory bandwidth. For a prototype meant to validate architectural ideas on FPGA, that's too much scope. Inference only.
+
+What model types? Transformers and LLMs as the primary target, with CNN support. Both architectures are dominated by GEMM—matrix multiplication. Optimize for GEMM first, add attention-specific operations like softmax and layernorm second.
+
+What precision? INT8 inputs with INT32 accumulation. This gives 95%+ of FP32 accuracy for inference while being 4× more efficient in compute and memory bandwidth. Industry has converged here for good reason.
+
+Batch size assumptions? Batch 1-8, latency-optimized. Edge and interactive use cases don't batch heavily. They need low latency per request.
+
+The full scoping summary: inference workload with LLM/Transformer focus (simpler than training, latency-sensitive), batch sizes 1-8 for edge/interactive use cases, INT8 precision with INT32 accumulation for good accuracy/efficiency tradeoff, targeting Xilinx FPGA for prototyping before any ASIC investment, power envelope constrained to FPGA limits of roughly 10-25W.
+
+The first real architectural choice: Systolic Array vs. Sea of MACs
+This is the decision that shapes everything downstream. Get it wrong and you're fighting the architecture for the rest of the project.
+
+The systolic array approach, which Google's TPU made famous, flows data through a 2D grid of multiply-accumulate units. You pick a dataflow—weight-stationary, output-stationary, or row-stationary—and data moves through in a regular pattern. Good for dense matrix multiplies. Simpler control. But data movement can be tricky.
+
+The sea-of-MACs approach, which Cerebras pioneered, uses a more flexible interconnect between processing elements. Each PE has local SRAM and can communicate with neighbors in various patterns. Handles irregular shapes and sparsity better. But routing is a nightmare, and you pay in energy per MAC.
+
+Both approaches work. The question is which tradeoffs matter for our constraints.
+
+The quantitative analysis is instructive. Consider a 256×256 systolic array versus 64K PEs in a spatial arrangement—both capable of 131 TOPS at INT8. When running a 256×256 GEMM that perfectly matches the array, the systolic approach hits ~95% utilization while the spatial approach achieves ~80-90% due to routing overhead. But when the problem shrinks to a 64×64 GEMM, the systolic array crashes to ~6% utilization while the spatial approach maintains ~70-80%.
+
+Control overhead tells a similar story from a different angle. Systolic control consumes maybe 1% of die area. Spatial routing and arbitration can eat 10-20%. Energy per MAC operation runs about 0.1 pJ for register-to-register movement in systolic versus 0.5-2 pJ when you're paying for routers and local SRAM access.
+
+The utilization numbers tell the story. Systolic arrays are fantastic when your problem size matches the array size. They're terrible when it doesn't. Sea of MACs handles variable sizes better, but pays for it in routing complexity and energy.
+
+The decision: systolic array. Here's why.
+
+First, it's FPGA-friendly—simpler control fits better in FPGA fabric. Second, the complexity is tractable—you can actually debug it without drowning in NoC design. Third, it's proven architecture—TPU, Groq, and most production accelerators use systolic. Fourth, dense workloads dominate our target—Transformers and CNNs are mostly dense GEMMs. Fifth, energy efficiency—neighbor-to-neighbor data movement is optimal.
+
+The insight from studying industry designs: modern chips use hierarchical hybrids. Systolic arrays inside compute clusters, connected by a mesh NoC between clusters. Best of both worlds. That's exactly what we implemented.
+
+Top-Level Architecture: The Tensor Processing Cluster
+A single 16×16 array isn't enough. The architecture must be scalable from the start—otherwise you're redesigning when you need to scale up.
+
+The solution: replicate a self-contained unit called a Tensor Processing Cluster (TPC), connect them via a Network-on-Chip.
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                        TENSOR ACCELERATOR TOP                                  │
+│  ┌──────────────────────────────────────────────────────────────────────────┐ │
+│  │                     Global Command Processor (GCP)                        │ │
+│  │                  Distributes work across TPCs, handles sync              │ │
+│  └──────────────────────────────────────────────────────────────────────────┘ │
+│                                      │                                         │
+│  ┌───────────────────────────────────┼───────────────────────────────────┐    │
+│  │                         Network-on-Chip (NoC)                          │    │
+│  │                    2×2 Mesh with XY Routing                            │    │
+│  │                                                                         │    │
+│  │    ┌──────────────┐         ┌──────────────┐                           │    │
+│  │    │    TPC 0     │◄═══════►│    TPC 1     │                           │    │
+│  │    │  ┌────────┐  │         │  ┌────────┐  │                           │    │
+│  │    │  │ 16×16  │  │         │  │ 16×16  │  │                           │    │
+│  │    │  │Systolic│  │         │  │Systolic│  │                           │    │
+│  │    │  │ Array  │  │         │  │ Array  │  │                           │    │
+│  │    │  └────────┘  │         │  └────────┘  │                           │    │
+│  │    │  + VPU, DMA  │         │  + VPU, DMA  │                           │    │
+│  │    │  + 2MB SRAM  │         │  + 2MB SRAM  │                           │    │
+│  │    └──────┬───────┘         └──────┬───────┘                           │    │
+│  │           ║                        ║                                   │    │
+│  │    ┌──────────────┐         ┌──────────────┐                           │    │
+│  │    │    TPC 2     │◄═══════►│    TPC 3     │                           │    │
+│  │    │  (same)      │         │  (same)      │                           │    │
+│  │    └──────────────┘         └──────────────┘                           │    │
+│  └───────────────────────────────────────────────────────────────────────┘    │
+│                                                                                │
+│  ┌──────────────────────────────────────────────────────────────────────────┐ │
+│  │                    AXI4 Memory Interface (DDR4/HBM)                       │ │
+│  └──────────────────────────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────────────────────────┘
+Why 4 TPCs in a 2×2 mesh? Scalability—the architecture naturally extends to 4×4, 8×8, or larger grids. Parallelism—four TPCs can process different layers or batch elements simultaneously. Fault isolation—a hung TPC doesn't bring down the system. And practical constraints—4 TPCs with 16×16 arrays actually fits in a VCU118.
+
+The Control Hierarchy: GCP and LCP
+Here's a question that doesn't get enough attention in architecture discussions: how do you coordinate multiple compute units without making control a bottleneck?
+
+The naive approach is centralized control—one master issues every instruction. That doesn't scale. The other extreme is fully distributed—every unit makes its own decisions. That's complex and hard to debug.
+
+We went with a two-level hierarchy. The Global Command Processor (GCP) distributes work and handles global synchronization. The Local Command Processor (LCP), one per TPC, handles instruction execution.
+
+This separation means the GCP sets up the high-level schedule once, then each LCP runs independently from its own instruction memory. TPCs only synchronize at explicit BARRIER instructions.
+
+The GCP's responsibilities are straightforward: write program counters for each TPC, monitor per-TPC done signals for global barriers, provide an AXI-Lite slave interface for host configuration, and generate interrupts to signal completion. The register map starts with CTRL at offset 0x000 for start control and TPC enable mask, STATUS at 0x004 for busy/done/error flags, IRQ_EN and IRQ_STATUS at 0x008 and 0x00C for interrupt management, and TPC program counters at 0x100/0x110/0x120/0x130.
+
+Tensor Processing Cluster Microarchitecture
+Each TPC is a self-contained compute engine. Understanding its internals is where the real design work lives.
+
+┌─────────────────────────────────────────────────────────────────┐
+│                    Tensor Processing Cluster                     │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │              Local Command Processor (LCP)                 │  │
+│  │  • Instruction fetch from local IMEM                      │  │
+│  │  • Decode 128-bit instructions                            │  │
+│  │  • Hardware loop stack (4 levels)                         │  │
+│  │  • Scoreboard for dependency tracking                     │  │
+│  │  • Dispatch to MXU/VPU/DMA                               │  │
+│  └────────────────────────┬──────────────────────────────────┘  │
+│                           │                                      │
+│     ┌─────────────────────┼─────────────────────┐               │
+│     │                     │                     │               │
+│     ▼                     ▼                     ▼               │
+│  ┌─────────┐       ┌─────────────┐       ┌─────────┐           │
+│  │   MXU   │       │    VPU      │       │   DMA   │           │
+│  │ 16×16   │       │  64-lane    │       │  2D     │           │
+│  │Systolic │       │   SIMD      │       │Strided  │           │
+│  │ Array   │       │             │       │         │           │
+│  └────┬────┘       └──────┬──────┘       └────┬────┘           │
+│       │                   │                   │                 │
+│       └───────────────────┴───────────────────┘                 │
+│                           │                                      │
+│                           ▼                                      │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │              SRAM Subsystem (16 Banks × 2MB)               │  │
+│  │  • Multi-port arbitration (MXU > VPU > DMA priority)      │  │
+│  │  • XOR-based bank mapping (reduce stride conflicts)       │  │
+│  │  • 256-bit wide access (32 bytes per read)               │  │
+│  └───────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+The key parameters crystallized through iteration. A 16×16 systolic array gives 256 MACs per cycle and fits FPGA resources. 64 VPU lanes match common tensor dimensions. 2 MB of SRAM across 16 banks of 128KB each provides enough capacity for double-buffering several tiles. 128-bit instruction width enables rich encoding without variable-length complexity. A loop stack depth of 4 handles nested tiled loops without issue.
+
+Matrix eXecution Unit — The Systolic Array
+The MXU is where most of the actual compute happens. The design decisions here have the most impact on efficiency.
+
+The dataflow choice—weight-stationary, output-stationary, or row-stationary—deserves careful thought. Weight-stationary keeps weights fixed in the array while streaming activations and partial sums through. Output-stationary keeps partial sums fixed while streaming weights and activations. Row-stationary varies what's stationary by row for flexibility.
+
+We chose weight-stationary for inference focus. Weights are constant during inference—load them once per layer, stream activations through. Simpler control, better for small batches. Google's TPUv1-v3 all use this approach.
+
+ ─── Activations flow horizontally ───►
+       
+    │   ┌─────┐   ┌─────┐   ┌─────┐   ┌─────┐
+    │   │ PE  │──►│ PE  │──►│ PE  │──►│ PE  │──► partial sums out
+    │   │ w00 │   │ w01 │   │ w02 │   │ w03 │
+  W │   └──┬──┘   └──┬──┘   └──┬──┘   └──┬──┘
+  e │      │         │         │         │
+  i │      ▼         ▼         ▼         ▼
+  g │   ┌─────┐   ┌─────┐   ┌─────┐   ┌─────┐
+  h │   │ PE  │──►│ PE  │──►│ PE  │──►│ PE  │──►
+  t │   │ w10 │   │ w11 │   │ w12 │   │ w13 │
+  s │   └──┬──┘   └──┬──┘   └──┬──┘   └──┬──┘
+    │      │         │         │         │
+  f │      ▼         ▼         ▼         ▼
+  l │   ┌─────┐   ┌─────┐   ┌─────┐   ┌─────┐
+  o │   │ PE  │──►│ PE  │──►│ PE  │──►│ PE  │──►
+  w │   │ w20 │   │ w21 │   │ w22 │   │ w23 │
+    │   └─────┘   └─────┘   └─────┘   └─────┘
+    ▼
+The specific MXU design decisions: 16×16 array size that fits FPGA BRAM and achieves good utilization for common layers. INT8 input precision per industry standard for inference. INT32 accumulator width to prevent overflow for K dimensions up to 65K. Column broadcast for weight loading—one column per cycle, 16 cycles total. Input-side registers for activation skewing to create proper diagonal wavefront alignment. Row-wise output draining with de-skewing to realign results over N cycles.
+
+The skewing problem deserves special attention
+This is one of the details that separates working systolic arrays from broken ones.
+
+Activations must enter with staggered timing to create the diagonal wavefront. On cycle 0, row 0 gets A[0,0]. On cycle 1, row 0 gets A[0,1] while row 1 gets A[1,0]. On cycle 2, row 0 gets A[0,2], row 1 gets A[1,1], row 2 gets A[2,0]. And so on.
+
+Results emerge staggered and must be realigned through de-skewing. For a 4×4 array, column 0 needs 6 delay cycles (calculated as 2×(N-1-0) for N=4), column 1 needs 4, column 2 needs 2, column 3 needs 0.
+
+Off-by-one errors in skewing cause silent data corruption. The results look plausible but are wrong. This was one of the trickiest parts to get right—we caught the bug in Python modeling before it ever reached RTL.
+
+Vector Processing Unit Microarchitecture
+Not everything is a dense matrix multiply. The VPU handles everything else: activation functions like ReLU, GELU, Sigmoid, and Softmax; normalization operations like LayerNorm and BatchNorm; elementwise operations like Add and Multiply for residual connections; and reductions like sum and max for softmax denominators.
+
+The design settled on 64 SIMD lanes to match common tensor dimensions as a power of 2. Lane width is 16-bit BF16 for full precision on non-GEMM operations. The register file holds 32 vectors of 64 elements each—4KB total, enough for complex operations. Pipeline depth runs 3-4 stages, balanced for FPGA timing.
+
+Supported operations span arithmetic (ADD, SUB, MUL, fused MADD), activations (RELU, approximate GELU, SILU, Sigmoid implemented via LUT for transcendentals), reductions (horizontal SUM, MAX, MIN for softmax and pooling), data movement (LOAD, STORE, BROADCAST, PERMUTE), and precision conversion (INT8↔BF16, quantize/dequantize).
+
+The transcendental function problem
+How do you compute GELU in hardware? The formula is 0.5x(1 + tanh(√(2/π)(x + 0.044715x³))). That's too complex for direct implementation.
+
+The solution: 256-entry lookup tables with linear interpolation. Index directly from the INT8 input value. Error is less than 1%, which is acceptable for inference.
+
+For Softmax, we use a 3-pass implementation. First pass finds the maximum through reduction across the vector. Second pass computes exp(x - max) via LUT. Third pass normalizes by dividing by the sum.
+
+DMA Engine Microarchitecture
+Memory latency is the silent killer of accelerator performance. The DMA engine's job is to hide it.
+
+The design supports 2D strided addressing—essential for tiled tensor access. Maximum burst length is 256 bytes for AXI4 compatibility. Two channels enable concurrent load and store for double-buffering. Zero-padding and transpose-on-the-fly handle edge tiles and layout conversion without software intervention.
+
+The 2D transfer format specifies source and destination addresses, 2D shape as rows and columns, and source and destination strides as bytes between rows. This enables efficient column extraction from row-major matrices, channel-first to channel-last conversion, and padding insertion for edge tiles.
+
+The double-buffering pattern
+Time →
+┌─────────┬─────────┬─────────┬─────────┬─────────┐
+│ Load A0 │ Comp A0 │ Comp A1 │ Comp A2 │ Comp A3 │  Compute
+│         │ Load A1 │ Load A2 │ Load A3 │ Load A4 │  DMA
+└─────────┴─────────┴─────────┴─────────┴─────────┘
+          │←─ Overlap: DMA hidden by compute ─→│
+While the MXU processes one tile, the DMA loads the next. The latency of external memory access gets hidden behind useful compute.
+
+SRAM Subsystem Microarchitecture
+High bandwidth without conflicts. That's the goal.
+
+Total capacity is 2 MB per TPC—enough to fit several tiles for double-buffering. 16 banks enable parallel access for MXU rows. Each bank is 256 bits wide, providing 32 bytes per access. Dual-port banks allow concurrent read and write. XOR-based bank mapping reduces stride conflicts.
+
+The XOR-based bank mapping
+Simple modulo mapping causes all elements of a matrix column to map to the same bank—serializing column access. That's unacceptable.
+
+The solution: XOR upper and lower address bits.
+
+verilog
+
+bank = addr[3:0] ^ addr[15:12];
+This distributes strided accesses across banks. Same technique used in GPU shared memory.
+
+The SRAM address space divides into Buffer 0 activations at 0x00000-0x3FFFF (256 KB), Buffer 0 weights at 0x40000-0x7FFFF (256 KB), Buffer 1 activations at 0x80000-0xBFFFF (256 KB), Buffer 1 weights at 0xC0000-0xFFFFF (256 KB), output at 0x100000-0x17FFFF (512 KB), and scratch at 0x180000-0x1FFFFF (512 KB).
+
+When multiple units request the same bank, arbitration priority runs MXU highest (compute should never stall), VPU middle (activations are on critical path), and DMA lowest (can absorb latency).
+
+Instruction Set Architecture
+Why not use RISC-V with custom extensions?
+
+It's a reasonable question. RISC-V has mature toolchains. Custom extensions are well-supported.
+
+But consider the tradeoffs. Custom ISA gives you 128-bit instruction width with rich encoding versus RISC-V's cramped 32-bit base. Single fixed format for decode versus multiple formats and extension handling. Native hardware loop support versus software emulation. Natural fit for coarse-grained tensor operations versus awkward mapping. The cost is toolchain work—you build it yourself instead of leveraging existing infrastructure.
+
+For a dedicated accelerator where every transistor counts, custom ISA wins. The toolchain cost is real, but the encoding efficiency matters more for our use case.
+
+Instruction format
+Bit Position:  127    120 119    112 111      96 95       80 79       64
+               ┌────────┬────────┬───────────┬───────────┬───────────┐
+               │ Opcode │ Subop  │    Dst    │   Src0    │   Src1    │
+               │ (8b)   │ (8b)   │   (16b)   │   (16b)   │   (16b)   │
+               └────────┴────────┴───────────┴───────────┴───────────┘
+
+Bit Position:  63       48 47       32 31       16 15        0
+               ┌───────────┬───────────┬───────────┬───────────┐
+               │   Dim_M   │   Dim_N   │   Dim_K   │   Flags   │
+               │   (16b)   │   (16b)   │   (16b)   │   (16b)   │
+               └───────────┴───────────┴───────────┴───────────┘
+Instruction classes: opcode 0x01 for TENSOR operations like GEMM and GEMM_ACC; 0x02 for VECTOR operations including ADD, MUL, RELU, GELU, SOFTMAX; 0x03 for DMA operations LOAD_2D and STORE_2D; 0x04 for SYNC operations WAIT_MXU, WAIT_VPU, WAIT_DMA; 0x05 for hardware LOOP start; 0x06 for ENDLOOP; 0x07 for multi-TPC BARRIER; 0xFF for HALT.
+
+Hardware loops
+Instruction fetch overhead adds up. A tiled GEMM might execute 4096 inner loop iterations. With software loops, that's 4096 instruction fetches. With hardware loops, it's roughly 10 instructions total.
+
+LOOP count           # Push to loop stack
+    # ... loop body ...
+ENDLOOP              # Decrement counter, branch if not zero
+Maximum nesting depth is 4 levels—sufficient for M/N/K tiling.
+
+Summary: The Architecture Decisions
+Looking back at the decisions in aggregate: systolic array for compute style because of simple control, FPGA-friendliness, and proven track record. Weight-stationary dataflow because inference keeps weights constant. 16×16 array size because it fits FPGA resources and achieves good utilization. INT8 precision with INT32 accumulation because it's industry standard and prevents overflow. 4 TPCs in a 2×2 mesh because it's scalable and fits the target FPGA. 64 VPU lanes to match tensor dimensions. 2MB SRAM across 16 banks with XOR mapping. Custom 128-bit ISA for rich encoding and hardware loops. GCP plus LCP control hierarchy because it scales to many TPCs.

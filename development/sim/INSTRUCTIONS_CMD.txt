@@ -1,0 +1,38 @@
+
+FIX FOR NOT WORKING:
+=====================
+cd /d "C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\Learning\Project\src"
+subst V: D:\Dev\verilator
+set VERILATOR_ROOT=V:\
+
+ONCE AGAIN run the `verilator -- binary ....... cmd`
+
+
+
+
+
+GENERAL:
+=========
+
+cd /d "C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\Learning\Project\src"
+rmdir /s /q obj_dir
+set VERILATOR_ROOT=D:\Dev\verilator
+
+
+in Msys2 UCRT64 terminal
+=========================
+cd /c/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/Learning/Project/src
+export VERILATOR_ROOT=/v
+export PATH="/v/bin:$PATH"
+rm -rf obj_dir && verilator --binary --timing -Wno-WIDTHTRUNC --top-module master_controller_tb master_controller/master_controller.v master_controller/master_controller_tb.v ping_pong/ping_pong_buffer.v controller/controller.v arithmetic/systolic/systolic8x8.v arithmetic/pe.v arithmetic/mac.v
+./obj_dir/Vmaster_controller_tb
+
+ping-pong compilation
+======================
+verilator --binary --timing -Wno-WIDTHTRUNC --top-module ping_pong_buffer_tb ping_pong\ping_pong_buffer.v ping_pong\ping_pong_buffer_tb.v
+
+controller.v compilation
+============================
+verilator --binary --timing --top-module controller_tb controller\controller_tb.v controller\controller.v arithmetic\systolic\systolic8x8.v arithmetic\pe.v arithmetic\mac.v multiplier\wallace8x8.v adders\half_adder\half_adder.v adders\full_adder\full_adder.v
+
+obj_dir\Vcontroller_tb.exe
