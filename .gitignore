@@ -16,3 +16,6 @@ hw/agvme_project/*.gprj.user
 
 # College review stuff
 docs/presentations/
+
+# obj_dir folder is due to verilator compiler
+development/archive/Attempted_architectures/obj_dir/
