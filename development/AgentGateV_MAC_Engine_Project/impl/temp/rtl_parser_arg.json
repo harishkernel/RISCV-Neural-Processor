@@ -2,59 +2,59 @@
  "Device" : "GW5A-25A",
  "Files" : [
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/activation_feeder.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/activation_feeder.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/agvme_core.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/agvme_core.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/agvme_top.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/agvme_top.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/bsram_pingpong.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/bsram_pingpong.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/input_skew.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/input_skew.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/int8_mac_booth.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/int8_mac_booth.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/int8_mac_dsp.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/int8_mac_dsp.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/main_controller.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/main_controller.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/output_drain.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/output_drain.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/pe_booth.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/pe_booth.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/pe_dsp.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/pe_dsp.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/post_processor.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/post_processor.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/systolic_array_8x8.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/systolic_array_8x8.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/src/weight_loader.v",
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/weight_loader.v",
    "Type" : "verilog"
   }
  ],
@@ -62,7 +62,7 @@
 
  ],
  "LoopLimit" : 2000,
- "ResultFile" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/PROJECT/Dev/impl/temp/rtl_parser.result",
+ "ResultFile" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/impl/temp/rtl_parser.result",
  "Top" : "agvme_top",
  "VerilogStd" : "verilog_2001",
  "VhdlStd" : "vhdl_93"
