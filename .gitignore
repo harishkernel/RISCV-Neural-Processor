@@ -18,4 +18,4 @@ hw/agvme_project/*.gprj.user
 docs/presentations/
 
 # obj_dir folder is due to verilator compiler
-development/archive/Attempted_architectures/obj_dir/
+**/obj_dir/
