@@ -1,5 +1,8 @@
 # Ignore Gowin FPGA bitstream files (.fs) being mistakenly identified as F# source code
 *.fs linguist-generated=true
+*.fs linguist-detectable=false
+*.fs -text linguist-vendored
 
 # Ignore all Gowin implementation/generated files from language statistics
 development/AgentGateV_MAC_Engine_Project/impl/** linguist-generated=true
+development/AgentGateV_MAC_Engine_Project/impl/** linguist-detectable=false
