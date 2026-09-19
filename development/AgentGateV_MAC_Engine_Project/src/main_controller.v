@@ -41,7 +41,7 @@ module main_controller #(
     reg [2:0] state;
 
     // Flush array + 1 cycle for new BSRAM latency
-    localparam FLUSH_CYCLES = (N-1) + (N-1) + 1 + 3 + 1;
+    localparam FLUSH_CYCLES = (N-1) + (N-1) + 1 + 3 + 1; // 5-stage pure DSP latency
     reg [4:0] flush_count;
 
     // Post-processor pipeline latency = 6 cycles

@@ -1,14 +1,12 @@
 //==============================================================================
-// Module: int8_mac
+// Module: int8_mac_booth
 // Project: AGVME - AgentGate-V MAC Engine
 //
 // Description:
-//   A hardcore, gate-level Fully-Pipelined Radix-4 Booth Multiplier.
-//   This module completely bypasses the FPGA synthesizer's native DSP/LUT 
-//   multipliers, forcing the logic level down to 2 by manually inserting 
-//   pipeline registers between every addition step in the reduction tree.
+//   A 7-cycle DEEP PIPELINE Radix-4 Booth Multiplier mapped STRICTLY to LUTs.
+//   Includes the NARROWED 20-bit accumulator.
 //
-//   Latency: 5 clock cycles
+//   Latency: 7 cycles
 //==============================================================================
 
 module int8_mac_booth #(
@@ -26,6 +24,8 @@ module int8_mac_booth #(
     
     output reg signed [ACC_W-1:0] acc_out
 );
+
+    localparam NARROW_W = 20;
 
     //==========================================================================
     // Stage 1: Input Latch
@@ -46,18 +46,16 @@ module int8_mac_booth #(
     //==========================================================================
     // Stage 2: Radix-4 Booth Partial Products Generation
     //==========================================================================
-    wire [8:0] B_ext = {w_reg1[7], w_reg1}; // 9-bit extended weight for chunking
-
+    wire [8:0] B_ext = {w_reg1[7], w_reg1};
     reg signed [15:0] pp0, pp1, pp2, pp3;
 
-    // Helper task to generate a 16-bit partial product from a 3-bit chunk
     function signed [15:0] booth_pp;
         input [2:0] chunk;
         input signed [7:0] A;
         input integer shift;
-        reg signed [8:0] A_ext; // 9-bit to hold 2*A without overflow
+        reg signed [8:0] A_ext; 
         begin
-            A_ext = A; // default assignment
+            A_ext = A;
             case (chunk)
                 3'b000, 3'b111: A_ext = 9'sd0;
                 3'b001, 3'b010: A_ext = {A[7], A};
@@ -66,7 +64,6 @@ module int8_mac_booth #(
                 3'b101, 3'b110: A_ext = -{A[7], A};
                 default:        A_ext = 9'sd0;
             endcase
-            // Sign extend to 16 bits and shift
             booth_pp = ({{7{A_ext[8]}}, A_ext}) <<< shift;
         end
     endfunction
@@ -86,7 +83,26 @@ module int8_mac_booth #(
     end
 
     //==========================================================================
-    // Stage 3: Reduction Tree Layer 1
+    // Stage 3: Extra Latch (Isolate PP Muxing from Adders)
+    //==========================================================================
+    reg signed [15:0] pp0_r, pp1_r, pp2_r, pp3_r;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            pp0_r <= 16'sd0;
+            pp1_r <= 16'sd0;
+            pp2_r <= 16'sd0;
+            pp3_r <= 16'sd0;
+        end else if (en) begin
+            pp0_r <= pp0;
+            pp1_r <= pp1;
+            pp2_r <= pp2;
+            pp3_r <= pp3;
+        end
+    end
+
+    //==========================================================================
+    // Stage 4: Reduction Tree Layer 1
     //==========================================================================
     reg signed [15:0] sum0_1, sum2_3;
 
@@ -95,13 +111,28 @@ module int8_mac_booth #(
             sum0_1 <= 16'sd0;
             sum2_3 <= 16'sd0;
         end else if (en) begin
-            sum0_1 <= pp0 + pp1;
-            sum2_3 <= pp2 + pp3;
+            sum0_1 <= pp0_r + pp1_r;
+            sum2_3 <= pp2_r + pp3_r;
         end
     end
 
     //==========================================================================
-    // Stage 4: Reduction Tree Layer 2 (Final Multiplier Latch)
+    // Stage 5: Extra Latch (Isolate Layer 1 from Layer 2)
+    //==========================================================================
+    reg signed [15:0] sum0_1_r, sum2_3_r;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            sum0_1_r <= 16'sd0;
+            sum2_3_r <= 16'sd0;
+        end else if (en) begin
+            sum0_1_r <= sum0_1;
+            sum2_3_r <= sum2_3;
+        end
+    end
+
+    //==========================================================================
+    // Stage 6: Reduction Tree Layer 2 (Final Multiplier Latch)
     //==========================================================================
     reg signed [15:0] mult_reg;
 
@@ -109,13 +140,28 @@ module int8_mac_booth #(
         if (!rst_n) begin
             mult_reg <= 16'sd0;
         end else if (en) begin
-            mult_reg <= sum0_1 + sum2_3;
+            mult_reg <= sum0_1_r + sum2_3_r;
         end
     end
 
     //==========================================================================
-    // Stage 5: Accumulator & Daisy Chain
+    // Stage 7: NARROW 20-bit Accumulator 
     //==========================================================================
+    reg signed [NARROW_W-1:0] acc_narrow;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            acc_narrow <= {NARROW_W{1'b0}};
+        end else begin
+            if (clr) begin
+                acc_narrow <= {NARROW_W{1'b0}};
+            end else if (en) begin
+                acc_narrow <= acc_narrow + {{(NARROW_W-16){mult_reg[15]}}, mult_reg};
+            end
+        end
+    end
+
+    // Output: sign-extend to 32-bit for daisy chain
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             acc_out <= {ACC_W{1'b0}};
@@ -124,8 +170,8 @@ module int8_mac_booth #(
                 acc_out <= shift_in;
             end else if (clr) begin
                 acc_out <= {ACC_W{1'b0}};
-            end else if (en) begin
-                acc_out <= acc_out + mult_reg;
+            end else begin
+                acc_out <= {{(ACC_W-NARROW_W){acc_narrow[NARROW_W-1]}}, acc_narrow};
             end
         end
     end

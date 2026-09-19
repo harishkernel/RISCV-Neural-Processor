@@ -1,35 +1,36 @@
 GowinSynthesis start
 Running parser ...
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\activation_feeder.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\agvme_core.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\agvme_top.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\bsram_pingpong.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\input_skew.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\int8_mac_booth.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\int8_mac_dsp.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\main_controller.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\output_drain.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\pe_booth.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\pe_dsp.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\post_processor.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\systolic_array_8x8.v'
-Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\weight_loader.v'
-Compiling module 'agvme_top'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\agvme_top.v":13)
-Compiling module 'bsram_pingpong'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\bsram_pingpong.v":12)
-Extracting RAM for identifier 'mem'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\bsram_pingpong.v":35)
-Compiling module 'activation_feeder'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\activation_feeder.v":9)
-Compiling module 'weight_loader'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\weight_loader.v":9)
-Compiling module 'agvme_core'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\agvme_core.v":10)
-Compiling module 'main_controller'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\main_controller.v":6)
-Compiling module 'input_skew'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\input_skew.v":14)
-Compiling module 'systolic_array_8x8'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\systolic_array_8x8.v":12)
-Compiling module 'pe_booth'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\pe_booth.v":12)
-Compiling module 'int8_mac_booth'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\int8_mac_booth.v":14)
-Compiling module 'output_drain'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\output_drain.v":12)
-Compiling module 'post_processor'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\post_processor.v":14)
-NOTE  (EX0101) : Current top module is "agvme_top"
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\activation_feeder.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\agvme_core.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\agvme_synthesis_wrapper.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\agvme_top.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\bsram_pingpong.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\input_skew.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\int8_mac_booth.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\int8_mac_dsp.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\main_controller.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\output_drain.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\pe_booth.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\pe_dsp.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\post_processor.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\systolic_array_8x8.v'
+Analyzing Verilog file 'C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\weight_loader.v'
+Compiling module 'agvme_synthesis_wrapper'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\agvme_synthesis_wrapper.v":12)
+Compiling module 'agvme_top'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\agvme_top.v":13)
+Compiling module 'bsram_pingpong'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\bsram_pingpong.v":12)
+Extracting RAM for identifier 'mem'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\bsram_pingpong.v":35)
+Compiling module 'activation_feeder'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\activation_feeder.v":9)
+Compiling module 'weight_loader'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\weight_loader.v":9)
+Compiling module 'agvme_core'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\agvme_core.v":10)
+Compiling module 'main_controller'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\main_controller.v":6)
+Compiling module 'input_skew'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\input_skew.v":14)
+Compiling module 'systolic_array_8x8'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\systolic_array_8x8.v":12)
+Compiling module 'pe_dsp'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\pe_dsp.v":6)
+Compiling module 'int8_mac_dsp'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\int8_mac_dsp.v":13)
+Compiling module 'output_drain'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\output_drain.v":12)
+Compiling module 'post_processor'("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\src\post_processor.v":14)
+NOTE  (EX0101) : Current top module is "agvme_synthesis_wrapper"
 [5%] Running netlist conversion ...
-WARN  (CV0016) : Input scale_mult is unused("C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\src\agvme_top.v":29)
 Running device independent optimization ...
 [10%] Optimizing Phase 0 completed
 [15%] Optimizing Phase 1 completed
@@ -45,6 +46,6 @@ Running technical mapping ...
 [75%] Tech-Mapping Phase 2 completed
 [80%] Tech-Mapping Phase 3 completed
 [90%] Tech-Mapping Phase 4 completed
-[95%] Generate netlist file "C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\impl\gwsynthesis\AGVME_Synthesis.vg" completed
-[100%] Generate report file "C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\fpga_project_20261709_agvme_accelerator\AGVME_Synthesis\impl\gwsynthesis\AGVME_Synthesis_syn.rpt.html" completed
+[95%] Generate netlist file "C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\impl\gwsynthesis\AGVME_Synthesis.vg" completed
+[100%] Generate report file "C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\impl\gwsynthesis\AGVME_Synthesis_syn.rpt.html" completed
 GowinSynthesis finish

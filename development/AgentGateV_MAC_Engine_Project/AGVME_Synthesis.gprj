@@ -3,10 +3,11 @@
 <Project>
     <Template>FPGA</Template>
     <Version>5</Version>
-    <Device name="GW5A-25A" pn="GW5A-LV25MG121NC1/I0">gw5a25a-002</Device>
+    <Device name="GW2A-18C" pn="GW2A-LV18PG256C8/I7">gw2a18c-011</Device>
     <FileList>
         <File path="src/activation_feeder.v" type="file.verilog" enable="1"/>
         <File path="src/agvme_core.v" type="file.verilog" enable="1"/>
+        <File path="src/agvme_synthesis_wrapper.v" type="file.verilog" enable="1"/>
         <File path="src/agvme_top.v" type="file.verilog" enable="1"/>
         <File path="src/bsram_pingpong.v" type="file.verilog" enable="1"/>
         <File path="src/input_skew.v" type="file.verilog" enable="1"/>

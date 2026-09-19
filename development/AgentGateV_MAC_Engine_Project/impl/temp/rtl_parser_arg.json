@@ -1,5 +1,5 @@
 {
- "Device" : "GW5A-25A",
+ "Device" : "GW2A-18C",
  "Files" : [
   {
    "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/activation_feeder.v",
@@ -7,6 +7,10 @@
   },
   {
    "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/agvme_core.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/src/agvme_synthesis_wrapper.v",
    "Type" : "verilog"
   },
   {
@@ -63,7 +67,7 @@
  ],
  "LoopLimit" : 2000,
  "ResultFile" : "C:/Users/haris/Documents/EEC/Year_4/Sem_7/final-yr-project/development/AgentGateV_MAC_Engine_Project/impl/temp/rtl_parser.result",
- "Top" : "agvme_top",
+ "Top" : "agvme_synthesis_wrapper",
  "VerilogStd" : "verilog_2001",
  "VhdlStd" : "vhdl_93"
 }

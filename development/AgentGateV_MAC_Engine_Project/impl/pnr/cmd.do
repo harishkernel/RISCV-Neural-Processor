@@ -1,0 +1,21 @@
+-d C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\impl\gwsynthesis\AGVME_Synthesis.vg
+-p GW2A-18C-PBGA256-8
+-pn GW2A-LV18PG256C8/I7
+-cfg C:\Users\haris\Documents\EEC\Year_4\Sem_7\final-yr-project\development\AgentGateV_MAC_Engine_Project\impl\pnr\device.cfg
+-bit
+-tr
+-ph
+-warning_all
+-tt
+-timing
+-ireg_not_in_iob
+-oreg_not_in_iob
+-ioreg_not_in_iob
+-cst_error
+-convert_sdp32_36_to_sdp16_18
+-place_option 2
+-route_option 1
+-clock_route_order 0
+-correct_hold 1
+-route_maxfan 23
+-global_freq 100.000

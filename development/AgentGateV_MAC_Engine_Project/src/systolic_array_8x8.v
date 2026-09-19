@@ -4,9 +4,9 @@
 //
 // Description:
 //   An 8x8 2D Systolic Array.
-//   100% Pure Soft-Core TPU implementation. Bypasses all hardware DSPs to 
-//   avoid physical routing bottlenecks. Uses the Radix-4 Booth Multiplier 
-//   for all 64 MACs.
+//   HYBRID ARCHITECTURE: 
+//   - Rows 0-7 (64 MACs): Hard DSPs (pe_dsp)
+//   - Rows 4-7 (32 MACs): Soft LUTs (pe_booth)
 //==============================================================================
 
 module systolic_array_8x8 #(
@@ -49,30 +49,49 @@ module systolic_array_8x8 #(
         end
     endgenerate
 
-    // Generate the N x N Array (100% Booth PEs)
+    // Generate the N x N Hybrid Array
     genvar row, col;
     generate
         for (row = 0; row < N; row = row + 1) begin : gen_row
             for (col = 0; col < N; col = col + 1) begin : gen_col
                 
-                pe_booth #(
-                    .CH_W(CH_W)
-                ) u_pe (
-                    .clk       (clk),
-                    .rst_n     (rst_n),
-                    .en        (en),
-                    .clr       (clr),
-                    .shift_en  (shift_en),
-                    .shift_in  (acc_chain[row*N + col]),
+                if (row < 8) begin : dsp_block
+                    pe_dsp #(
+                        .CH_W(CH_W)
+                    ) u_pe (
+                        .clk       (clk),
+                        .rst_n     (rst_n),
+                        .en        (en),
+                        .clr       (clr),
+                        .shift_en  (shift_en),
+                        .shift_in  (acc_chain[row*N + col]),
 
-                    .a_in      (a_wire[row][col]),
-                    .w_in      (w_wire[row][col]),
+                        .a_in      (a_wire[row][col]),
+                        .w_in      (w_wire[row][col]),
 
-                    .a_out     (a_wire[row][col+1]),
-                    .w_out     (w_wire[row+1][col]),
+                        .a_out     (a_wire[row][col+1]),
+                        .w_out     (w_wire[row+1][col]),
+                        .acc_out   (acc_chain[row*N + col + 1])
+                    );
+                end else begin : booth_block
+                    pe_booth #(
+                        .CH_W(CH_W)
+                    ) u_pe (
+                        .clk       (clk),
+                        .rst_n     (rst_n),
+                        .en        (en),
+                        .clr       (clr),
+                        .shift_en  (shift_en),
+                        .shift_in  (acc_chain[row*N + col]),
 
-                    .acc_out   (acc_chain[row*N + col + 1])
-                );
+                        .a_in      (a_wire[row][col]),
+                        .w_in      (w_wire[row][col]),
+
+                        .a_out     (a_wire[row][col+1]),
+                        .w_out     (w_wire[row+1][col]),
+                        .acc_out   (acc_chain[row*N + col + 1])
+                    );
+                end
 
             end
         end
