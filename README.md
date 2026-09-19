@@ -14,7 +14,7 @@ Implemented on an ultra-constrained **₹10,000 (budget friendly) Gowin GW2A-18 
 ## The Architecture: The Native DSP Array
 To balance hardware constraints on an older 55nm budget FPGA, this project employs extreme architectural planning and logic-gate-level optimizations:
 
-* **The 5-Stage Native DSP Pipeline:** The critical path was entirely absorbed into the Gowin ALUMAC hard macros. By introducing specialized routing isolation registers, the multiplier and accumulator logic are perfectly mapped to physical silicon, bypassing slow FPGA LUT fabric to hit an unprecedented **205.196 MHz**.
+* **The 5-Stage Native DSP Pipeline:** The critical path was entirely absorbed into the Gowin ALUMAC hard macros. By introducing specialized routing isolation registers (mult_reg1, mult_reg2), the multiplier and accumulator logic are perfectly mapped to physical silicon, bypassing slow FPGA LUT fabric to hit an unprecedented **205.196 MHz**.
 * **100% DSP Mapping (66% Utilization):** The entire 8x8 systolic array (64 MACs) is mapped exclusively to the Tang Primer's physical DSP blocks (using 32 of the 48 available blocks). This drops standard logic utilization to a mere 24%, leaving massive room for softcore RISC-V orchestration.
 * **Virtual Synthesis Wrapper:** To prove the architecture scales without violating physical I/O pin constraints (the GW2A-18 only has 191 pins), a 4-pin shift-register Virtual Wrapper was implemented to feed the massive 227-pin internal TPU bus.
 * **Power-of-Two (PoT) Requantization:** The massive 32x16 hardware multiplier in the post-processor was destroyed and replaced with a zero-cost Shift-Add approximation network (e.g., data * 1.25 is computed as data + (data >>> 2)).
