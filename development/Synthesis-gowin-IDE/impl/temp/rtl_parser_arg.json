@@ -1,0 +1,73 @@
+{
+ "Device" : "GW2A-18C",
+ "Files" : [
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/activation_feeder.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_core.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_synthesis_wrapper.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_top.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/bsram_pingpong.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/input_skew.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_booth.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/main_controller.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/output_drain.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_booth.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/post_processor.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/weight_loader.v",
+   "Type" : "verilog"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/impl/temp/rtl_parser.result",
+ "Top" : "agvme_synthesis_wrapper",
+ "VerilogStd" : "verilog_2001",
+ "VhdlStd" : "vhdl_93"
+}

@@ -1,0 +1,1266 @@
+[
+ {
+  "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_synthesis_wrapper.v",
+  "InstLine" : 12,
+  "InstName" : "agvme_synthesis_wrapper",
+  "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_synthesis_wrapper.v",
+  "ModuleLine" : 12,
+  "ModuleName" : "agvme_synthesis_wrapper",
+  "SubInsts" : [
+   {
+    "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_synthesis_wrapper.v",
+    "InstLine" : 64,
+    "InstName" : "u_agvme_top",
+    "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_top.v",
+    "ModuleLine" : 13,
+    "ModuleName" : "agvme_top",
+    "SubInsts" : [
+     {
+      "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_top.v",
+      "InstLine" : 87,
+      "InstName" : "u_bsram_act",
+      "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/bsram_pingpong.v",
+      "ModuleLine" : 12,
+      "ModuleName" : "bsram_pingpong"
+     },
+     {
+      "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_top.v",
+      "InstLine" : 101,
+      "InstName" : "u_bsram_wt",
+      "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/bsram_pingpong.v",
+      "ModuleLine" : 12,
+      "ModuleName" : "bsram_pingpong"
+     },
+     {
+      "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_top.v",
+      "InstLine" : 119,
+      "InstName" : "u_act_feeder",
+      "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/activation_feeder.v",
+      "ModuleLine" : 9,
+      "ModuleName" : "activation_feeder"
+     },
+     {
+      "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_top.v",
+      "InstLine" : 135,
+      "InstName" : "u_wt_loader",
+      "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/weight_loader.v",
+      "ModuleLine" : 9,
+      "ModuleName" : "weight_loader"
+     },
+     {
+      "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_top.v",
+      "InstLine" : 156,
+      "InstName" : "u_core",
+      "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_core.v",
+      "ModuleLine" : 10,
+      "ModuleName" : "agvme_core",
+      "SubInsts" : [
+       {
+        "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_core.v",
+        "InstLine" : 61,
+        "InstName" : "u_ctrl",
+        "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/main_controller.v",
+        "ModuleLine" : 6,
+        "ModuleName" : "main_controller"
+       },
+       {
+        "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_core.v",
+        "InstLine" : 88,
+        "InstName" : "u_skew_a",
+        "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/input_skew.v",
+        "ModuleLine" : 14,
+        "ModuleName" : "input_skew"
+       },
+       {
+        "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_core.v",
+        "InstLine" : 99,
+        "InstName" : "u_skew_w",
+        "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/input_skew.v",
+        "ModuleLine" : 14,
+        "ModuleName" : "input_skew"
+       },
+       {
+        "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_core.v",
+        "InstLine" : 114,
+        "InstName" : "u_array",
+        "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+        "ModuleLine" : 12,
+        "ModuleName" : "systolic_array_8x8",
+        "SubInsts" : [
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[0].gen_col[0].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[0].gen_col[1].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[0].gen_col[2].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[0].gen_col[3].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[0].gen_col[4].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[0].gen_col[5].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[0].gen_col[6].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[0].gen_col[7].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[1].gen_col[0].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[1].gen_col[1].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[1].gen_col[2].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[1].gen_col[3].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[1].gen_col[4].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[1].gen_col[5].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[1].gen_col[6].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[1].gen_col[7].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[2].gen_col[0].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[2].gen_col[1].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[2].gen_col[2].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[2].gen_col[3].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[2].gen_col[4].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[2].gen_col[5].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[2].gen_col[6].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[2].gen_col[7].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[3].gen_col[0].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[3].gen_col[1].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[3].gen_col[2].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[3].gen_col[3].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[3].gen_col[4].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[3].gen_col[5].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[3].gen_col[6].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[3].gen_col[7].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[4].gen_col[0].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[4].gen_col[1].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[4].gen_col[2].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[4].gen_col[3].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[4].gen_col[4].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[4].gen_col[5].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[4].gen_col[6].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[4].gen_col[7].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[5].gen_col[0].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[5].gen_col[1].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[5].gen_col[2].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[5].gen_col[3].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[5].gen_col[4].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[5].gen_col[5].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[5].gen_col[6].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[5].gen_col[7].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[6].gen_col[0].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[6].gen_col[1].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[6].gen_col[2].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[6].gen_col[3].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[6].gen_col[4].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[6].gen_col[5].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[6].gen_col[6].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[6].gen_col[7].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[7].gen_col[0].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[7].gen_col[1].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[7].gen_col[2].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[7].gen_col[3].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[7].gen_col[4].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[7].gen_col[5].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[7].gen_col[6].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         },
+         {
+          "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/systolic_array_8x8.v",
+          "InstLine" : 61,
+          "InstName" : "gen_row[7].gen_col[7].dsp_block.u_pe",
+          "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+          "ModuleLine" : 6,
+          "ModuleName" : "pe_dsp",
+          "SubInsts" : [
+           {
+            "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/pe_dsp.v",
+            "InstLine" : 44,
+            "InstName" : "u_mac",
+            "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/int8_mac_dsp.v",
+            "ModuleLine" : 13,
+            "ModuleName" : "int8_mac_dsp"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_core.v",
+        "InstLine" : 131,
+        "InstName" : "u_drain",
+        "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/output_drain.v",
+        "ModuleLine" : 12,
+        "ModuleName" : "output_drain"
+       }
+      ]
+     },
+     {
+      "InstFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/agvme_top.v",
+      "InstLine" : 177,
+      "InstName" : "u_post",
+      "ModuleFile" : "D:/final-yr-project/development/Synthesis-gowin-IDE/src/post_processor.v",
+      "ModuleLine" : 14,
+      "ModuleName" : "post_processor"
+     }
+    ]
+   }
+  ]
+ }
+]
