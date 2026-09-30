@@ -6,3 +6,4 @@
 # Ignore all Gowin implementation/generated files from language statistics
 development/AgentGateV_MAC_Engine_Project/impl/** linguist-generated=true
 development/AgentGateV_MAC_Engine_Project/impl/** linguist-detectable=false
+development/Synthesis-gowin-IDE/impl/** linguist-generated=true
