@@ -22,3 +22,6 @@ docs/presentations/
 
 # obj_dir folder is due to verilator compiler
 **/obj_dir/
+
+# Jupyter Notebook checkpoints in subfolders
+**/.ipynb_checkpoints/
