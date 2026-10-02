@@ -1,0 +1,13 @@
+<Window x:Class="ProjectAgentGateV.Views.NoticeDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AgentGate notice" Width="500" Height="340" MinHeight="250" WindowStartupLocation="CenterOwner"
+        WindowStyle="None" ResizeMode="CanResize" Background="Transparent" AllowsTransparency="True" ShowInTaskbar="False">
+  <Border Background="White" CornerRadius="20" BorderBrush="#E7EAF1" BorderThickness="1" Padding="28" Effect="{StaticResource CardShadow}">
+    <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+      <StackPanel Orientation="Horizontal"><Border Width="38" Height="38" Background="#EEF0FF" CornerRadius="12" Margin="0,0,12,0"><Viewbox Width="19" Height="19"><Path Data="{StaticResource OcticonReport}" Fill="{StaticResource AccentBrush}"/></Viewbox></Border><TextBlock x:Name="DialogTitle" Text="Notice" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/></StackPanel>
+      <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,20,0,18"><TextBlock x:Name="DialogMessage" TextWrapping="Wrap" FontSize="13" Foreground="#4F5A6F" LineHeight="20"/></ScrollViewer>
+      <Button Grid.Row="2" Style="{StaticResource PrimaryButton}" Height="40" HorizontalAlignment="Right" MinWidth="92" Click="Close_Click"><TextBlock Text="Close" FontSize="12"/></Button>
+    </Grid>
+  </Border>
+</Window>

@@ -1,0 +1,9 @@
+**/bin/
+**/obj/
+dist/
+benchmark_reports/
+*.user
+*.suo
+**/__pycache__/
+**/*.py[cod]
+**/.ipynb_checkpoints/

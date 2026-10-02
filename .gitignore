@@ -22,3 +22,13 @@ docs/presentations/
 
 # obj_dir folder is due to verilator compiler
 **/obj_dir/
+# Local training data (keep source notebooks and checkpoints in Git; do not push image corpora)
+/model_training/dataset/
+/model_training/dataset_fakes/
+/model_training/irrelevant_classes/
+# Generated notebook and Python caches
+**/.ipynb_checkpoints/
+**/__pycache__/
+**/*.py[cod]
+# Per-machine editor settings
+/.vscode/
